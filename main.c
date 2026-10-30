@@ -11,9 +11,10 @@
  * @param shift The numeric key indicating how many positions to shift letters.
  */
 void encrypt(char *text, int shift) {
+    shift = (shift % 26 + 26) % 26;
     for (; *text; text++)
-        if (*text >= 'A' && *text <= 'Z') *text = 'A' + (*text - 'A' + (shift % 26 + 26)) % 26;
-        else if (*text >= 'a' && *text <= 'z') *text = 'a' + (*text - 'a' + (shift % 26 + 26)) % 26;
+        if (*text >= 'A' && *text <= 'Z') *text = 'A' + (*text - 'A' + shift) % 26;
+        else if (*text >= 'a' && *text <= 'z') *text = 'a' + (*text - 'a' + shift) % 26;
 }
 
 int main(void) {
